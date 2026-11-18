@@ -5,6 +5,7 @@ export interface GalleryEntry {
   results: { title: string; url: string; kind: 'image' | 'link' | 'demo' | 'remotion' }[];
   process: { title: string; text: string }[]; reflection: string | null;
 }
+export const assetUrl = (path: string) => path.startsWith('/') ? `${import.meta.env.BASE_URL}${path.slice(1)}` : path;
 export const entries: GalleryEntry[] = [{
   id: 'holo-forge-001', number: '001', skill: 'holo-card-studio',
   source: 'https://github.com/EverettFish/holo-card-studio', title: '将灵感，铸成光。',

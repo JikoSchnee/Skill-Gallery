@@ -27,7 +27,7 @@
 .skill-card.is-back{background:linear-gradient(135deg,#c5dcd3 0%,#c8cee7 27%,#dac5df 52%,#eaccc6 75%,#e4e5b9 100%) border-box;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .3s ease,box-shadow .3s;background-image:radial-gradient(ellipse at var(--mx,50%) var(--my,50%),#ffffff65,transparent 48%),linear-gradient(135deg,#c5dcd3 0%,#c8cee7 27%,#dac5df 52%,#eaccc6 75%,#e4e5b9 100%);background-size:auto,150% 150%;background-position:center,var(--mx,50%) var(--my,50%)}
 .skill-card.is-back .skill-card-front{visibility:hidden}
 .skill-card-back{position:absolute;inset:0;display:grid;place-items:center;border-radius:15px}
-.card-back-logo{display:block;width:88px;height:88px;background:#f7f7f0;mask:url('/cards/back-logo.svg') center/contain no-repeat;-webkit-mask:url('/cards/back-logo.svg') center/contain no-repeat}
+.card-back-logo{display:block;width:88px;height:88px;background:#f7f7f0;mask:var(--card-back-logo-url) center/contain no-repeat;-webkit-mask:var(--card-back-logo-url) center/contain no-repeat}
 .card-side-toggle{display:block;margin:16px auto 0;padding:8px 15px;border:1px solid #303c2020;border-radius:20px;background:transparent;font-size:10px;color:#68725e}
 .card-side-toggle:hover{background:#f7f7f0}
 

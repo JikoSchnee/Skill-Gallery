@@ -1,5 +1,5 @@
 import { useRef, useState, type PointerEvent } from 'react';
-import type { GalleryEntry } from '../data/entries';
+import { assetUrl, type GalleryEntry } from '../data/entries';
 import './SkillCard.css';
 
 /** A single readable card face; light follows the pointer across its entire surface. */
@@ -37,7 +37,7 @@ export default function SkillCard({ entry, onOpen }: { entry: GalleryEntry; onOp
     <div className={`skill-card${showBack ? ' is-back' : ''}`} ref={face}>
       <div className="skill-card-front" aria-hidden={showBack}>
       <div className="skill-card-top"><span className="skill-card-symbol">✳</span><h2>{entry.skill}</h2><span className="skill-card-id">{entry.number}</span></div>
-      <div className="skill-card-art" ref={artwork}><img src={entry.cover ?? entry.artwork} alt={`${entry.skill} · ${entry.title}`} draggable={false}/><div className="art-holo" aria-hidden="true"/><div className="art-sparkles" aria-hidden="true"/><div className="art-highlight" aria-hidden="true"/></div>
+      <div className="skill-card-art" ref={artwork}><img src={assetUrl(entry.cover ?? entry.artwork)} alt={`${entry.skill} · ${entry.title}`} draggable={false}/><div className="art-holo" aria-hidden="true"/><div className="art-sparkles" aria-hidden="true"/><div className="art-highlight" aria-hidden="true"/></div>
       <div className="skill-card-caption"><span>EXPERIMENT / {entry.number}</span><span>HOLOGRAPHIC</span></div>
       <div className="skill-card-copy"><h3>{entry.title}</h3><p>{entry.description}</p></div>
       <dl className="skill-card-facts"><div><dt>使用模型</dt><dd>{entry.model ?? '待补充'}</dd></div><div><dt>尝试日期</dt><dd>{entry.date.replaceAll('-', '.')}</dd></div></dl>

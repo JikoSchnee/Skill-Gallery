@@ -12,10 +12,11 @@ import {
   interpolate,
   useCurrentFrame,
   useVideoConfig,
-  staticFile,
+  staticFile as remotionStaticFile,
 } from "remotion";
 import { Audio } from "@remotion/media";
 import type { ReactNode } from "react";
+const staticFile = (path: string) => remotionStaticFile(`${import.meta.env.BASE_URL}${path}`);
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 const font = '"PingFang SC", "Microsoft YaHei", sans-serif';
 

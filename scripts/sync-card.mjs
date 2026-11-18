@@ -1,0 +1,15 @@
+import { copyFile, mkdir, readFile, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+const source = path.resolve('cards/holo-forge');
+const target = path.resolve('public/cards/holo-forge');
+await mkdir(target, {recursive:true});
+for (const name of ['subject','background','text','lineart']) await copyFile(`${source}/assets/${name}.png`, `${target}/${name}.png`);
+await copyFile(`${source}/web/assets/card.glb`, `${target}/card.glb`);
+await copyFile(`${source}/card.blend`, `${target}/card.blend`);
+await copyFile(`${source}/renders/angled.png`, `${target}/hero.png`);
+await copyFile(`${source}/renders/front.png`, `${target}/preview.png`);
+const config = JSON.parse(await readFile(`${source}/card-config.json`, 'utf8'));
+config.assets = Object.fromEntries(['subject','background','text','lineart'].map(name => [name, `./${name}.png`]));
+config.assets.model = './card.glb';
+await writeFile(`${target}/card-config.json`, JSON.stringify(config, null, 2));
+console.log('Card assets synchronized.');

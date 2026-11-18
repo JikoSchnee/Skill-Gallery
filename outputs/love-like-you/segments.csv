@@ -1,0 +1,4 @@
+start_seconds,end_seconds,label
+0.000,24.000,solo
+24.000,48.000,solo
+48.000,52.500,end

@@ -1,0 +1,30 @@
+{
+  "name": "skill-gallery",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "node scripts/sync-anatomy.mjs && tsc -b && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "predev": "node scripts/sync-remotion.mjs",
+    "prebuild": "node scripts/sync-remotion.mjs"
+  },
+  "dependencies": {
+    "@remotion/captions": "4.0.538",
+    "@remotion/media": "4.0.538",
+    "@remotion/player": "4.0.538",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "remotion": "4.0.538",
+    "three": "0.180.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@types/three": "^0.180.0",
+    "@vitejs/plugin-react": "^4.4.1",
+    "typescript": "~5.8.3",
+    "vite": "^6.3.5"
+  }
+}

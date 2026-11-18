@@ -1,0 +1,30 @@
+{
+  "mode": "holographic",
+  "title": "holo-card-studio",
+  "subtitle": "SKILL GALLERY",
+  "edition": "001",
+  "collection": "SKILL GALLERY",
+  "parameters": {
+    "subjectScale": 1,
+    "subjectDepth": 0,
+    "backgroundDepth": 0,
+    "foil": 0.75,
+    "particles": 0.35,
+    "glow": 0.1
+  },
+  "safeArea": {
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ]
+  },
+  "minimal": true,
+  "assets": {
+    "subject": "./subject.png",
+    "background": "./background.png",
+    "lineart": "./lineart.png",
+    "text": "./text.png",
+    "model": "./card.glb"
+  }
+}

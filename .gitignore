@@ -1,0 +1,7 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.DS_Store
+cards/*/tools/
+cards/*/web/node_modules/
+*.blend1

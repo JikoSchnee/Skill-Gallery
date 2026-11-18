@@ -1,0 +1,13 @@
+// Rasterize the existing code-native design without changing its artwork or typography.
+import sharp from '/Users/jikoschnee/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp/dist/index.mjs';
+import {readFile,writeFile} from 'node:fs/promises';
+const root='cards/holo-minimal';
+const wrap=body=>`<svg xmlns="http://www.w3.org/2000/svg" width="1110" height="1605" viewBox="0 0 370 535">${body}</svg>`;
+const cover=await readFile('public/cards/holo-forge/cover.svg','utf8');
+const subject=wrap(`<svg x="21" y="64" width="328" height="194" viewBox="0 0 720 460" preserveAspectRatio="none">${cover.replace(/<svg[^>]*>/,'').replace('</svg>','')}</svg>`);
+const text=wrap(`<g font-family="PingFang SC, Helvetica, sans-serif" fill="#242723"><text x="20" y="38" font-size="18" font-weight="700">✦ holo-card-studio</text><text x="328" y="37" font-size="9" fill="#727a6d">#001</text><text x="21" y="280" font-size="8" fill="#737a6a">✧ 3D 全息 · 图像生成 · 创意编程</text><text x="327" y="280" font-size="7" fill="#737a6a">HOLO</text><text x="21" y="328" font-size="23" font-weight="600">将灵感，铸成光。</text><g font-size="12" fill="#6c7566"><text x="21" y="357">用 holo-card-studio 将黑金工坊的想象，转化为一张</text><text x="21" y="378">可以转动、随视角流光的全息收藏卡。这也是 Skill</text><text x="21" y="399">Gallery 的第一件藏品：用制作卡片的 Skill，记录</text><text x="21" y="420">制作卡片这件事。</text></g><path d="M21 443h328M21 499h328" stroke="#252b24" stroke-opacity=".12"/><g font-size="8" fill="#7e8677"><text x="21" y="460">使用模型</text><text x="349" y="460" text-anchor="end">尝试日期</text></g><g font-size="10" font-weight="600"><text x="21" y="477">待补充</text><text x="349" y="477" text-anchor="end">2026.10.21</text></g><g font-size="8" fill="#7b8372"><text x="21" y="520">SKILL GALLERY / 001</text><text x="349" y="520" text-anchor="end">查看完整记录 ↗</text></g></g>`);
+const background=wrap('<path fill="#f1f2e9" d="M0 0h370v535H0z"/>');
+const line=wrap('<path fill="white" d="M0 0h370v535H0z"/><rect x="21" y="64" width="328" height="194" fill="none" stroke="black" stroke-width="1"/>');
+for(const [name,svg] of Object.entries({subject,text,background,lineart:line})){await writeFile(`${root}/assets/${name}.svg`,svg);await sharp(Buffer.from(svg)).png().toFile(`${root}/assets/${name}.png`);}
+await sharp(Buffer.from(background)).composite([{input:Buffer.from(subject)},{input:Buffer.from(text)}]).png().toFile(`${root}/preview.png`);
+await writeFile(`${root}/card-config.json`,JSON.stringify({mode:'holographic',title:'holo-card-studio',subtitle:'SKILL GALLERY',edition:'001',collection:'SKILL GALLERY',parameters:{subjectScale:1,subjectDepth:0,backgroundDepth:0,foil:.75,particles:.35,glow:.1},safeArea:{scale:1,offset:[0,0]},minimal:true},null,2));

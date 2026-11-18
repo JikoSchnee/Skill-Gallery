@@ -1,0 +1,43 @@
+.skill-card-space{position:relative;width:386px;max-width:100%;perspective:1100px;padding:6px 0}
+.skill-card{--mx:50%;--my:25%;--art-x:45%;--art-y:35%;position:relative;isolation:isolate;border:9px solid transparent;border-radius:24px;padding:21px;background:linear-gradient(#f7f7f0,#f7f7f0) padding-box,linear-gradient(135deg,#c5dcd3 0%,#c8cee7 27%,#dac5df 52%,#eaccc6 75%,#e4e5b9 100%) border-box;box-shadow:0 2px 3px #29362604,0 18px 36px -22px #29362640;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .3s ease,box-shadow .3s;overflow:hidden;text-align:left}
+.skill-card-top{display:flex;gap:9px;align-items:center;margin-bottom:21px}.skill-card-symbol{font-size:23px;color:#626e59}.skill-card-top h2{font-size:18px;letter-spacing:-.65px;margin:0;font-weight:800;overflow-wrap:anywhere}.skill-card-id{margin-left:auto;font-size:10px;color:#899181;font-variant-numeric:tabular-nums}
+.skill-card-art{position:relative;isolation:isolate;aspect-ratio:1.68;border-radius:6px;overflow:hidden;background:#dde4d8}.skill-card-art img{display:block;width:100%;height:100%;object-fit:cover}.skill-card-caption{display:flex;justify-content:space-between;margin-top:12px;font-size:7px;letter-spacing:1.3px;color:#828a78}
+.skill-card-copy{padding:25px 0 23px}.skill-card-copy h3{font-size:24px;letter-spacing:-1px;line-height:1.4;margin:0 0 10px;font-weight:600}.skill-card-copy p{font-size:12px;line-height:1.95;color:#737b6b;margin:0}
+.skill-card-facts{display:flex;justify-content:space-between;border-block:1px solid #303c2014;padding:15px 0;margin:0}.skill-card-facts div:last-child{text-align:right}.skill-card-facts dt{font-size:8px;color:#8b9383;margin-bottom:6px}.skill-card-facts dd{font-size:10px;margin:0;font-weight:600}.skill-card-bottom{display:flex;justify-content:space-between;padding-top:17px;font-size:8px;letter-spacing:.5px;color:#828a78}
+.skill-card-light{position:absolute;inset:0;pointer-events:none;z-index:1;border-radius:inherit;opacity:.06;background:linear-gradient(115deg,transparent 15%,#d8f2bc 28%,#a1d8e7 37%,#ddbcf3 45%,#f3c4ca 52%,#f7e4b3 60%,transparent 75%);background-size:250% 250%;background-position:var(--mx) var(--my);mix-blend-mode:multiply;transition:opacity .35s}.skill-card-light:after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at var(--mx) var(--my),#fff9,transparent 55%);mix-blend-mode:screen}.skill-card-space:hover .skill-card-light,.skill-card:focus-within .skill-card-light{opacity:.16}
+.skill-card-open{position:absolute;inset:0;z-index:2;width:100%;height:100%;padding:0;border:0;background:transparent;border-radius:inherit}.skill-card-open:focus-visible{outline:2px solid #68765e;outline-offset:-4px}.large-stage{display:grid;place-items:center;overflow:visible}.large-stage .skill-card-space{position:relative;width:330px}.detail-preview{height:auto;min-height:660px}.large-stage .skill-card-copy p{font-size:11px}
+@media(max-width:760px){.detail-preview{height:auto;min-height:0}.large-stage{margin:25px 0}.skill-card{padding:19px}.skill-card-top h2{font-size:17px}}
+@media(prefers-reduced-motion:reduce){.skill-card{transform:none!important;transition:none}.skill-card-light{opacity:.12!important}}
+
+/* The artwork has its own foil coordinates, clipped independently of the card. */
+.art-holo,.art-sparkles,.art-highlight{position:absolute;inset:0;border-radius:inherit;pointer-events:none;transition:background-position .45s ease,opacity .35s ease}
+.art-holo{background:repeating-linear-gradient(112deg,#8edcce 0%,#a4c7f4 14%,#d3ade9 28%,#efb6bd 42%,#efd699 56%,#b8dfab 70%,#8edcce 84%);background-size:280% 240%;background-position:var(--art-x) var(--art-y);mix-blend-mode:color-burn;opacity:.24}
+.art-sparkles{background-image:radial-gradient(circle,#fff 0 .65px,transparent 1px),radial-gradient(circle,#698da5 0 .5px,transparent .9px);background-size:7px 11px,13px 9px;background-position:var(--art-x) var(--art-y),center;mix-blend-mode:soft-light;opacity:.3;mask-image:radial-gradient(ellipse at center,#000,transparent 85%)}
+.art-highlight{inset:auto;width:100%;height:100%;left:var(--art-x);top:var(--art-y);background:radial-gradient(ellipse at center,#fff8 0%,#fff2 18%,transparent 42%);transform:translate(-50%,-50%);transition:left .3s ease,top .3s ease,opacity .35s ease;opacity:.22;mix-blend-mode:screen}
+@media(hover:hover) and (pointer:fine){.skill-card-space:hover .art-holo{opacity:.48}.skill-card-space:hover .art-sparkles{opacity:.55}.skill-card-space:hover .art-highlight{opacity:.45}}
+.skill-card:focus-within .art-holo{opacity:.38}
+@media(hover:none){.skill-card-space:hover .skill-card-light{opacity:.06}}
+@media(prefers-reduced-motion:reduce){.art-holo,.art-sparkles,.art-highlight{transition:none!important}.art-holo{opacity:.24!important}.art-sparkles{opacity:.3!important}.art-highlight{opacity:.22!important}.skill-card-light{opacity:.06!important}}
+
+/* Pointer tracking is immediate; easing applies only when returning to rest. */
+.skill-card[data-tracking="true"]{transition:box-shadow .3s}
+.skill-card[data-tracking="true"] .art-holo,.skill-card[data-tracking="true"] .art-sparkles,.skill-card[data-tracking="true"] .art-highlight{transition:opacity .2s ease}
+
+.skill-card-view{max-width:100%;min-width:0}
+.skill-card.is-back{background:linear-gradient(135deg,#c5dcd3 0%,#c8cee7 27%,#dac5df 52%,#eaccc6 75%,#e4e5b9 100%) border-box;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .3s ease,box-shadow .3s;background-image:radial-gradient(ellipse at var(--mx,50%) var(--my,50%),#ffffff65,transparent 48%),linear-gradient(135deg,#c5dcd3 0%,#c8cee7 27%,#dac5df 52%,#eaccc6 75%,#e4e5b9 100%);background-size:auto,150% 150%;background-position:center,var(--mx,50%) var(--my,50%)}
+.skill-card.is-back .skill-card-front{visibility:hidden}
+.skill-card-back{position:absolute;inset:0;display:grid;place-items:center;border-radius:15px}
+.card-back-logo{display:block;width:88px;height:88px;background:#f7f7f0;mask:url('/cards/back-logo.svg') center/contain no-repeat;-webkit-mask:url('/cards/back-logo.svg') center/contain no-repeat}
+.card-side-toggle{display:block;margin:16px auto 0;padding:8px 15px;border:1px solid #303c2020;border-radius:20px;background:transparent;font-size:10px;color:#68725e}
+.card-side-toggle:hover{background:#f7f7f0}
+
+.card-filler{perspective:1100px;cursor:default;touch-action:pan-y}
+.card-filler .skill-card{aspect-ratio:370/535;transition:transform .12s ease-out,box-shadow .3s}
+.card-filler:hover .skill-card{box-shadow:0 12px 30px -18px #29362670}
+@media(prefers-reduced-motion:reduce){.skill-card.is-back{transform:none!important;transition:none!important}}
+
+/* Keep metadata and the footer anchored to the card's bottom edge. */
+.skill-card{display:flex;flex-direction:column}
+.skill-card-front{display:flex;flex-direction:column;flex:1;min-height:0}
+.skill-card-front> :not(.skill-card-copy){flex-shrink:0}
+.skill-card-facts{margin-top:auto}

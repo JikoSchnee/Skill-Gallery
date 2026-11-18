@@ -1,0 +1,19 @@
+{
+  "source": "/Users/jikoschnee/Github Local/remotion pro/public/audio/love-like-you.mp3",
+  "source_sha256": "9ec9d859f0aa035f0829fc89f5b3182568e5d0f989f226d7e6230bf976a84ea1",
+  "model": "harmonix-all",
+  "device": "cpu",
+  "model_source": "https://github.com/mir-aidj/all-in-one",
+  "inference_source": "https://github.com/openmirlab/all-in-one-infer",
+  "inference_revision": "566f96c3f007c783ab5eb6db0123bf3335af8f31",
+  "versions": {
+    "all-in-one-infer": "3.1.0",
+    "demucs-infer": "4.4.0",
+    "madmom-infer": "0.3.0",
+    "torch": "2.14.1"
+  },
+  "time_unit": "seconds from start of supplied clip",
+  "duration_seconds": 52.5,
+  "validation": "Smoke check passed: timestamps ordered and within duration; contiguous segments cover full clip; marked audio duration verified. No manual listening validation.",
+  "notes": "Segment labels and bar starts are model predictions. solo is the raw label, not a verified claim of instrument solo. MP3 was decoded once to PCM WAV with FFmpeg before inference."
+}

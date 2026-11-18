@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>Leica M3 · 三维线稿</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="importmap">{"imports":{"three":"../anatomy-sr6/vendor/three.module.js","three/addons/":"./vendor/"}}</script>
+</head>
+<body>
+  <main id="stage" aria-label="徕卡 M3 三维线条模型">
+    <header><h1>Leica M3<span>Summicron 50mm f/2</span></h1><p>03 / 机械联动</p></header>
+    <div id="viewport" tabindex="0" role="img" aria-label="可旋转的三维相机模型；拖动旋转，滚轮缩放，方向键旋转，0 键复位"></div>
+    <div id="loading" role="status">构建线条…</div>
+    <aside id="inspector" aria-label="内部布局检查">
+      <section id="mechanism" aria-label="机械操作">
+        <div class="actions">
+          <button id="advance">过片</button><button id="shutter">快门</button><button id="rewind">倒片</button>
+        </div>
+        <div class="transport"><button id="pause" disabled>暂停</button><button id="resetMechanism">重置机构</button></div>
+        <div class="mechanismReadout"><span id="frameCount">第 0 格</span><span>动作慢放示意</span></div>
+        <p id="motionStatus" role="status">待过片</p>
+        <progress id="motionProgress" max="1" value="0" aria-label="动作进度"></progress>
+      </section>
+      <div class="shellModes" role="group" aria-label="外壳显示">
+        <button data-shell="full" aria-pressed="false">完整</button>
+        <button data-shell="cut" aria-pressed="true">半剖</button>
+        <button data-shell="removed" aria-pressed="false">移除</button>
+      </div>
+      <label for="assembly">查看组件</label>
+      <select id="assembly" aria-label="查看组件">
+        <option value="all">全部组件</option>
+        <option value="chassis">承载骨架</option>
+        <option value="film">胶片与输片</option>
+        <option value="shutter">布帘快门</option>
+        <option value="drive">过片与释放</option>
+        <option value="finder">取景与测距</option>
+        <option value="optics">镜头与光圈</option>
+      </select>
+      <label for="spread">分组展开 <output id="spreadValue">0%</output></label>
+      <input id="spread" type="range" min="0" max="100" value="0" aria-label="分组展开程度">
+      <button id="filmToggle" aria-pressed="true">胶片与压片板 <span>显示</span></button>
+      <button id="fit">适配当前组件 ↗</button>
+      <p id="assemblyNote" aria-live="polite"></p>
+    </aside>
+    <nav aria-label="观察方向">
+      <button data-view="perspective" aria-pressed="true">立体</button>
+      <button data-view="front" aria-pressed="false">正面</button>
+      <button data-view="rear" aria-pressed="false">背面</button>
+      <button data-view="top" aria-pressed="false">顶部</button>
+      <button data-view="bottom" aria-pressed="false">底部</button>
+      <button data-view="left" aria-pressed="false">左侧</button>
+      <button data-view="right" aria-pressed="false">右侧</button>
+      <span class="divider"></span><button id="reset" aria-label="复位视角与缩放">复位 ↺</button>
+    </nav>
+    <footer><span>拖动旋转 · 滚轮缩放 · 右键平移</span><span id="viewName" aria-live="polite">立体视图</span></footer>
+  </main>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
